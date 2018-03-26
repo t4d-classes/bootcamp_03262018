@@ -1,0 +1,19 @@
+{
+  "colors": [
+    {
+      "id": 1,
+      "name": "red",
+      "hexCode": "#ff0000"
+    },
+    {
+      "id": 2,
+      "name": "green",
+      "hexCode": "#00ff00"
+    },
+    {
+      "id": 3,
+      "name": "blue",
+      "hexCode": "#0000ff"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "uiapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1"
+  },
+  "scripts": {
+    "start": "concurrently \"react-scripts start\" \"npm run rest\"",
+    "rest": "json-server --watch --port 4000 db.json",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "concurrently": "3.5.1",
+    "json-server": "0.12.1"
+  }
+}
