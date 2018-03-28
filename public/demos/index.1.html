@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+    <style>
+
+      /* #my-div { color: red; }
+      .summary-text { color: green; }
+      div { color: blue; } */
+
+      /* li[data-active='true'] {
+        font-weight: bold;
+      } */
+
+      /* li:nth-child(2) {
+        color:red;
+      } */
+
+      /* div  p {
+        color:red;
+      } */
+
+      input ~ span.message {
+        display: none;
+      }
+
+      input:invalid ~ span.message {
+        display:inline;
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <div>
+      Fav Soccer Team: <input type="text" required value="Arsenal">
+      <span>*</span>
+      <span class="message">Soccer Team is required.</span>
+    </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      var t;
+
+      console.log(typeof t);
+
+      t = 42;
+      console.log(typeof t);
+
+      t = 'hello';
+      console.log(typeof t);
+
+      t = true;
+      console.log(typeof t);
+
+      t = Symbol('test');
+      console.log(typeof t);
+
+      t = {
+        id: 2,
+        name: 'Bob',
+      };
+      console.log(typeof t);
+
+      t = [1,2,3,4];
+      console.log(typeof t);
+
+      t = function() { };
+      t.someProp = 'test';
+      console.log(typeof t);
+      console.dir(t);
+
+    </script>
+  </body>
+</html>

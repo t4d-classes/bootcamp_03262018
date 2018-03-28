@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      function doIt() {
+
+        const person = {
+          firstName: 'Mark',
+          lastName: 'Zuckerberg',
+          getFullName: function() {
+            return this.firstName + ' ' + this.lastName;
+          },
+          'not a valid variable name': 'some value',
+        };
+
+        const person2 = {};
+        person2.firstName = 'S';
+        person2.lastName = 'S';
+        person2.gfn = person.getFullName;
+        console.log(person2);
+        console.log(person2.gfn());
+
+        // person[{}] = 'test';
+
+        // console.log(person.firstName);
+        // console.log(person['not a valid variable name']);
+        // console.log(person.getFullName());
+        // console.log(person['[object Object]']);
+        // console.log(person);
+      }
+
+      doIt();
+  
+    </script>
+  </body>
+</html>

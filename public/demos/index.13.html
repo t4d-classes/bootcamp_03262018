@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      const parent = {
+        amt: 10000000,
+        name: 'Aksy',
+        address: {
+          city: 'Fremont',
+          country: 'Republic of California',
+        },
+      };
+
+
+      const child = Object.create(parent);
+      child.name = 'Amar';
+      child.amt = 15;
+      delete child.amt;
+
+      parent.amt = 20000000000;
+
+      console.log(child.amt);
+      console.log(child.address.country);
+
+      child.address.country = 'Australia';
+      console.log(child.address.country);
+      console.log(parent.address.country);
+      
+      console.dir(child);
+  
+    </script>
+  </body>
+</html>

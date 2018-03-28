@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      // const items = [1,'test',() => {}, {}, [], true];
+
+      // items.newProp = 'another new prop';
+
+      // console.log(items instanceof Array);
+
+
+      // console.log(items);
+
+
+      // const items = {
+      //   '0': 'test',
+      //   '1': true,
+      //   '2': () => {},
+      //   length: 3,
+      // };
+
+      // //Object.setPrototypeOf(items, Array.prototype);
+
+      // console.log(Array.from(items));
+
+
+      const colors = [ 'black', 'blue', 'pink', 'green', 'white', 'yellow'];
+
+      // console.log(colors.push('orange'));
+      // console.log(colors.pop());
+      // console.log(colors.unshift('orange'));
+      // console.log(colors.shift());
+      // colors.splice(2, 2, 'red', 'hot pink');
+      // colors.reverse();
+      // colors.sort();
+
+      let newColors = colors.concat('orange');
+      newColors = newColors.slice(0, newColors.length - 1);
+      newColors = [ 'orange' ].concat(newColors);
+      newColors = newColors.slice(1);
+
+      // newColors = newColors.slice(0, 2).concat(['red','hot pink'], newColors.slice(4));
+
+      const [ firstColor, secondColor, ...leftOver ] = [
+        ...newColors.slice(0, 2),
+        'red',
+        'hot pink',
+        ...newColors.slice(4)
+      ];
+        
+      console.log(firstColor, secondColor, leftOver);
+
+      // console.log(colors);
+      // console.log(newColors);
+
+
+
+
+  
+    </script>
+  </body>
+</html>

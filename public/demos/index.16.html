@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      const firstName = 'Bob';
+
+      const propName = '_lastName';
+
+      const person = {
+        firstName,
+        [ propName ]: 'Smith',
+        getFullName() {
+          return this.firstName + ' ' + this.lastName;
+        },
+        get lastName() {
+          return this._lastName;
+        },
+        set lastName(value) {
+          this._lastName = value;
+        }
+      }
+
+      const mapStateToProps = ({ items }) => ({ items });
+
+
+      const person2 = {
+        firstName: 'Bob',
+        address: {
+          city: 'Palo Alto',
+        },
+      };
+
+      const { firstName: fn, address: { city } } = person2;
+
+      console.log(fn);
+      console.log(city);
+
+
+
+
+  
+    </script>
+  </body>
+</html>

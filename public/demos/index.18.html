@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      function outer() {
+
+        console.log(this);
+
+        function inner() {
+          console.log(this);
+        }
+
+        inner();
+      }
+
+      const o = {
+        id: 2,
+        outer: outer,
+      };
+
+      o.outer();
+
+      window.setTimeout(o.outer, 3000)
+
+
+      // function doIt() {
+      //   // call-site this
+      //   console.log(this);
+      // }
+
+      // doIt();
+      // window.doIt();
+
+      // const o = {
+      //   id: 2,
+      //   doIt,
+      // };
+
+      // o.doIt();
+
+      // console.log(o.doIt === doIt);
+
+  
+    </script>
+  </body>
+</html>

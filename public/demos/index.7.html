@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html dir="ltr">
+
+  <head>
+    <title>My First Page</title>
+    <style>
+
+      #container {
+        display: flex;
+        border: 2px solid green;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      #container > div {
+        border: 2px solid blue;
+        padding: 10px;
+      }
+
+      #container > div:nth-child(2) {
+        align-self: flex-start;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div id="container">
+      <div>a</div>
+      <div>b</div>
+      <div>c</div>
+      <div>e</div>
+      <div>f</div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      const person = {
+        _firstName: 'Bob',
+        lastName: 'Smith',
+      };
+
+      person.firstName = 'Bob';
+
+      Object.defineProperty(person, 'firstName', {
+        configurable: true,
+        enumerable: true,
+        get: function() {
+          console.log('getting first name');
+          return this._firstName;
+        },
+        set: function(value) {
+          console.log('setting first name');
+          this._firstName = value;
+        },
+      });    
+
+      person.firstName = 'Tim';
+      console.log(person.firstName);  
+
+      // Object.defineProperty(person, 'firstName', {
+      //   configurable: true,
+      //   enumerable: true,
+      //   writable: true,
+      //   value: 'Bob',
+      // });
+
+
+  
+    </script>
+  </body>
+</html>
