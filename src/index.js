@@ -3,7 +3,13 @@ import * as ReactDOM from 'react-dom';
 
 import { ColorTool } from './components/ColorTool';
 
+const colorList = [ 'blue', 'red', 'green', 'hot pink' ];
+
+
 ReactDOM.render(
-  <ColorTool />,
+  <div>
+    <ColorTool colors={colorList} />
+  </div>,
+
   document.querySelector('main'),
 );
