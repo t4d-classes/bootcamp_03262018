@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      let counter = 0;
+
+      function outer() {
+
+        let t = 2 + counter++;
+
+        setTimeout(function() {
+          t = t + 2;
+        }, 3000);
+
+        return function inner() {
+          console.log(t);
+        };
+
+      }
+
+      const fn = outer();
+      fn();
+      const fn2 = outer();
+      // fn2();
+
+      setTimeout(function() {
+        fn();
+        // fn2();
+      }, 6000);
+  
+    </script>
+  </body>
+</html>

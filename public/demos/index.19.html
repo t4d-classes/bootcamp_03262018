@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      function Person(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+      }
+
+      Person.prototype.getFullName = function() {
+        return this.firstName + ' ' + this.lastName;
+      };
+
+      function Student(studentId, firstName, lastName) {
+        this._super(firstName, lastName);
+        this.studentId = studentId;
+      }
+
+      Student.prototype = Object.create(Person.prototype);
+      Student.prototype.constructor = Student;
+      Student.prototype._super = Person;
+
+      Student.prototype.getRecordInfo = function() {
+        return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
+      };
+
+      const s = new Student(1, 'Bob','Smith');
+      console.log(s.getFullName());
+      console.log(s.getRecordInfo());
+
+      console.dir(Student);
+      console.dir(s);
+
+      class Person2 {
+
+        constructor(firstName, lastName) {
+          this.firstName = firstName;
+          this.lastName = lastName;
+        }
+
+        getFullName() {
+          return this.firstName + ' ' + this.lastName;
+        }
+      }
+
+      console.log(typeof Person2);
+
+      class Student2 extends Person2 {
+
+        constructor(studentId, firstName, lastName) {
+          super(firstName, lastName);
+          this.studentId = studentId;
+        }
+
+        getRecordInfo() {
+          return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
+        }
+      }
+
+      const s2 = new Student2(1, 'Bob','Smith');
+
+      Person2.prototype.getFullName = function() {
+        return "you have been hacked...";
+      }
+
+      console.log(s2.getFullName());
+      console.log(s2.getRecordInfo());
+      console.dir(Student2);
+      console.dir(s2);
+
+      // console.dir(Person);
+      // console.dir(Person2);
+
+
+      
+
+  
+    </script>
+  </body>
+</html>

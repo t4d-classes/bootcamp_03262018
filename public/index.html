@@ -2,87 +2,77 @@
 
 <html>
 
-  <head>
-    <title>My First Page</title>
-  </head>
-  <body>
-    <script>
+<head>
+  <title>My First Page</title>
+</head>
 
-      'use strict';
+<body>
 
-      function Person(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-      }
+  <button type="button">Get My Location</button>
 
-      Person.prototype.getFullName = function() {
-        return this.firstName + ' ' + this.lastName;
+  <script>
+
+    'use strict';
+
+    const myFetch = (url, options = {}) => new Promise(resolve => {
+
+      const requestOptions = {
+        method: 'GET',
+        headers: {},
+        body: null,
+        ...options,
       };
 
-      function Student(studentId, firstName, lastName) {
-        this._super(firstName, lastName);
-        this.studentId = studentId;
-      }
-
-      Student.prototype = Object.create(Person.prototype);
-      Student.prototype.constructor = Student;
-      Student.prototype._super = Person;
-
-      Student.prototype.getRecordInfo = function() {
-        return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
-      };
-
-      const s = new Student(1, 'Bob','Smith');
-      console.log(s.getFullName());
-      console.log(s.getRecordInfo());
-
-      console.dir(Student);
-      console.dir(s);
-
-      class Person2 {
-
-        constructor(firstName, lastName) {
-          this.firstName = firstName;
-          this.lastName = lastName;
+      const xhr = new XMLHttpRequest();
+      xhr.addEventListener('readystatechange', function () {
+        if (xhr.status >= 200 && xhr.status < 400 && xhr.readyState === 4) {
+          console.log('all done');
+          resolve(JSON.parse(xhr.responseText));
         }
+      });
 
-        getFullName() {
-          return this.firstName + ' ' + this.lastName;
-        }
+      xhr.open(requestOptions.method, url);
+
+      Object.keys(requestOptions.headers).forEach(requestHeaderKey => {
+        xhr.setRequestHeader(requestHeaderKey, requestOptions.headers[requestHeaderKey]);
+      });
+
+      if (requestOptions.body) {
+        xhr.send(requestOptions.body);
+      } else {
+        xhr.send();
       }
+    });
 
-      console.log(typeof Person2);
+    const myGetLocation = () => new Promise((resolve, reject) =>
+      navigator.geolocation.getCurrentPosition(resolve, reject));
 
-      class Student2 extends Person2 {
+   
+    document.addEventListener('DOMContentLoaded', () => {
 
-        constructor(studentId, firstName, lastName) {
-          super(firstName, lastName);
-          this.studentId = studentId;
-        }
+      document.querySelector('button').addEventListener('click', () => {
+        console.log('made it here...');
 
-        getRecordInfo() {
-          return this.studentId + ' ' + this.lastName + ', ' + this.firstName;
-        }
-      }
+        const p1 = myGetLocation()
+          .then(position => myFetch('http://localhost:4000/locations', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(position.coords),
+          }))
+          .then(result => console.log(result))
+          .catch(result => console.error(result));
 
-      const s2 = new Student2(1, 'Bob','Smith');
+        const p2 = new Promise(resolve => {
+          setTimeout(() => resolve('location/rest call timeout'), 30000);
+        });
 
-      Person2.prototype.getFullName = function() {
-        return "you have been hacked...";
-      }
-
-      console.log(s2.getFullName());
-      console.log(s2.getRecordInfo());
-      console.dir(Student2);
-      console.dir(s2);
-
-      // console.dir(Person);
-      // console.dir(Person2);
+        Promise.race([p1,p2]).then(result => console.log(result));
+      });
+    });
 
 
-      
 
-  
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      const myFetch = (url, options = {}) => new Promise(resolve => {
+
+        const requestOptions = {
+          method: 'GET',
+          headers: {},
+          body: null,
+          ...options,
+        };
+
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('readystatechange', function() {
+          if (xhr.status >= 200 && xhr.status < 400 && xhr.readyState === 4) {
+            console.log('all done');
+            resolve(JSON.parse(xhr.responseText));
+          }
+        });
+        
+        xhr.open(requestOptions.method, url);
+
+        Object.keys(requestOptions.headers).forEach(requestHeaderKey => {
+          xhr.setRequestHeader(requestHeaderKey, requestOptions.headers[requestHeaderKey]);
+        });
+
+        if (requestOptions.body) {
+          xhr.send(requestOptions.body);
+        } else {
+          xhr.send();
+        }
+      });
+
+      const myGetLocation = () => new Promise( (resolve, reject) =>
+        resolve({ coords: { x: 1, y: 1 }}));
+        // navigator.geolocation.getCurrentPosition(resolve, reject));
+
+      myGetLocation()
+        .then(position => myFetch('http://localhost:4000/locations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(position.coords),
+        }))
+        .then(result => console.log(result))
+        .catch(result => console.error(result));
+
+
+
+    </script>
+  </body>
+</html>

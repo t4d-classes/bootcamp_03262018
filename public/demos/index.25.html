@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      const youngMan = new Promise(function youngLady(resolve, reject) {
+
+      setTimeout(function() {
+        resolve('she is madly in love with him...');
+      }, 2000);
+
+      });
+
+      youngMan.then(function(result) {
+        console.log(result);
+        console.log('yay she said yes!');
+
+        console.log('looking for a place to get married');
+        return new Promise(function(resolve) {
+
+          setTimeout(function() {
+            resolve('found a place to get married!');
+          }, 2000);
+
+        });
+      }).then(result => {
+
+        console.log(result);
+
+        console.log('time to find wedding garments...');
+        return new Promise(function(resolve) {
+          setTimeout(function() {
+            resolve('found some clothes to wear...');
+          }, 2000);
+        });
+
+      }).then(result => {
+
+        console.log(result);
+
+      }).catch(function(result) {
+        console.log(result);
+        console.log('time to sign up for eHarmony...');
+      });
+
+      console.log('young man is waiting...');
+
+    </script>
+  </body>
+</html>

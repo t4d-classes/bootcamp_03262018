@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      const youngMan = new Promise(function youngLady(resolve, reject) {
+
+        setTimeout(function() {
+          reject('she has fallen in love with his best friend...');
+        }, 2000);
+
+      });
+
+      youngMan.then(function(result) {
+        console.log(result);
+        console.log('yay she said yes!');
+      }).catch(function(result) {
+        console.log(result);
+        console.log('time to sign up for eHarmony...');
+      });
+
+      console.log('young man is waiting...');
+
+  
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      // setTimeout(function() {
+      //     console.log('a');
+      //     setTimeout(function() {
+      //         console.log('b');
+      //         setTimeout(function() {
+      //             console.log('c');
+      //         }, 1000);
+      //     }, 1000);
+      // }, 2000);
+
+
+      function allDone() {
+        console.log('all done');
+      }
+
+      let counter = 0;
+
+      counter++;
+      setTimeout(function() {
+        console.log('a')
+        counter--;
+        if (counter === 0) {
+          allDone();
+        }
+      }, 1000);
+
+      counter++;
+      setTimeout(function() {
+        console.log('b')
+        counter--;
+        if (counter === 0) {
+          allDone();
+        }
+      }, 3000);
+
+      counter++;
+      setTimeout(function() {
+        console.log('c')
+        counter--;
+        if (counter === 0) {
+          allDone();
+        }
+      }, 500);
+
+      counter++;
+      setTimeout(function() {
+        console.log('d')
+        counter--;
+        if (counter === 0) {
+          allDone();
+        }
+      }, 2300);
+
+      console.log('made it here');
+
+      // const con = new Connection('connection string');
+      // con.open();
+
+      // const rst = con.execute("select * from some_table;")
+
+      // for (item of rst) {
+      //   console.log(item);
+      // }
+
+      // const con = new Connection('connection string');
+      // con.open(function(openCon) {
+      //   openCon.execute("select * from some_table;", function(rst) {
+      //     for (item of rst) {
+      //       console.log(item);
+      //     }
+      //   });
+      // });
+
+  
+    </script>
+  </body>
+</html>

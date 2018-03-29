@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>My First Page</title>
+  </head>
+  <body>
+    <script>
+
+      'use strict';
+
+      const p1 = new Promise(resolve => setTimeout(() => resolve('a'), 2000));
+      const p2 = new Promise(resolve => setTimeout(() => resolve('b'), 4000));
+      const p3 = new Promise( (resolve, reject) => setTimeout(() => reject('c'), 6000));
+      const p4 = new Promise(resolve => setTimeout(() => resolve('d'), 8000));
+
+      p1.then(result => console.log(result));
+      p2.then(result => console.log(result));
+      p3.then(result => console.log(result)).catch(results => console.log('rejected ' + results));
+      p4.then(result => console.log(result));
+
+      Promise.all([p1,p2,p3,p4])
+        .then(results => console.log('all done: ' + results))
+        .catch(results => console.log('one failed: ' + results));
+
+
+    </script>
+  </body>
+</html>
