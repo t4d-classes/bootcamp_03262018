@@ -1,49 +1,16 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-class ListItem extends React.Component {
+import { App } from './components/App';
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      item: this.props.item,
-    };
-  }
-
-  render() {
-    return <li>
-      props: {this.props.item},
-      state: {this.state.item},
-    </li>;
-  }
-}
-
-class ItemList extends React.Component {
-  render() {
-    return <ul>
-      {this.props.items.map(
-        (item, index) => <ListItem key={index} item={item} />
-      )}
-    </ul>;
-  }
-}
-
-const colors = ['red','green','blue'];
+const colors = [ 'red', 'blue', 'green' ];
+const cars = [
+  { id: 1, make: 'Chevy', model: 'Bolt', year: 2017, color: 'blue', price: 40000 },
+  { id: 2, make: 'Ford', model: 'F-150', year: 2016, color: 'red', price: 45000 },
+]
 
 ReactDOM.render(
-  <ItemList items={colors} />,
+  <App colors={colors} cars={cars} />,
   document.querySelector('main'),
 );
 
-setTimeout(() => {
-
-  colors.splice(1, 1);
-
-  ReactDOM.render(
-    <ItemList items={colors} />,
-    document.querySelector('main'),
-  );
-  
-
-}, 4000);
